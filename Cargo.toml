@@ -1,0 +1,30 @@
+[package]
+name = "vulkan_rust_loading_texture_example"
+version = "0.1.0"
+authors = ["jjspira"]
+edition = "2018"
+
+[features]
+metal = ["gfx-backend-metal"]
+dx12 = ["gfx-backend-dx12"]
+vulkan = ["gfx-backend-vulkan"]
+
+[dependencies]
+failure = "0.1.5"
+gfx-hal = "0.3.1"
+image = "0.22.2"
+
+[dependencies.gfx-backend-vulkan]
+version = "0.3"
+optional = true
+features = ["winit"]
+
+[target.'cfg(target_os = "macos")'.dependencies.gfx-backend-metal]
+version = "0.3"
+optional = true
+features = ["winit"]
+
+[target.'cfg(windows)'.dependencies.gfx-backend-dx12]
+version = "0.3"
+optional = true
+features = ["winit"]
